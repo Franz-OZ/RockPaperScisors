@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<html>
+<script>
+let compScore=0;
+let playerScore=0;
+let rock="ROCK";
+let paper="PAPER";
+let scisors="SCISORS";
+
+function game() {
+  for (i=0; i<5; i++){
+   
+      keepScore();
+  }}
+
+function start(){
+  let prmpt=prompt("Rock, Paper or Scisors?");
+ let playerChoice=prmpt.toUpperCase();
+ if (playerChoice==rock || playerChoice==scisors || playerChoice==paper) {
+  return playerChoice;} else {
+  alert("You misstyped");
+ start()}}
+   
+   function computerPlay (){
+      let coe=Math.random();
+  if (coe>0.67) {
+   alert("Computer played Paper!!");
+    return paper ;
+     }     else if (coe>0.33 && coe<0.67 ) {
+     alert("Computer played Rock!");
+       return rock ;} else {
+       alert("Computer played Scisors!!");
+         return scisors ;}
+            }
+
+function disp() {
+  let playerChoice=start();
+  let response= computerPlay();
+  if (response==playerChoice){
+    let cas1="Draw! try again!";
+    alert(cas1);
+    return 5;
+  } else if (response==rock && playerChoice==paper){
+    let cas2="Paper beats Rock, you win!";
+    alert (cas2);
+    return 3;
+  }else if (response==rock && playerChoice==scisors){
+    let cas3="Rock beats Scisors, you lose!";
+    alert (cas3);
+    return 2;
+  }else if (response==paper && playerChoice==scisors){
+    let cas4="Scisors beats Paper, you win!";
+    alert (cas4);
+    return 3;
+  }else if (response==paper && playerChoice==rock){
+    let cas5="Paper beats Rock, you lose!";
+    alert (cas5);
+    return 2;
+}else if (response==scisors && playerChoice==rock){
+    let cas6="Rock beats Scisors, you win!";
+    alert (cas6);
+  return 3;
+}else if (response==scisors && playerChoice==paper){
+    let cas7="Scisors beats paper, you lose!";
+    alert (cas7);
+  return 2;  
+}
+}
+ function keepScore(){
+       let rez=disp();
+          if (rez==3){
+            playerScore++;
+            alert(`Computer Score: ${compScore}   Player Score: ${playerScore}.`);
+          } else if (rez==2){
+             compScore++;
+             alert(`Computer Score: ${compScore}   Player Score: ${playerScore}.`);
+           } else{
+              keepScore();
+            }
+        }
+
+  game()
+</script>
+</html>
